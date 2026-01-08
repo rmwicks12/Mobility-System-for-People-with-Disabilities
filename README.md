@@ -10,7 +10,6 @@ This logic is commonly used in assistive technology projects (like a "Smart Stic
 - **Serial Debugging:** Outputs distance readings to the Serial Monitor (9600 baud) for easy testing.
 
 ## 🛠️ Components List
-
 1. **Arduino Nano (or Uno)** – Microcontroller
    * *Recommended: Arduino Nano*
 2. **HC-SR04 Ultrasonic Sensor** – Distance Measuring Sensor
@@ -23,3 +22,19 @@ This logic is commonly used in assistive technology projects (like a "Smart Stic
 8. **Slide Switch** – Power Control
 9. **Hook-up Wires** (Male–Female + Male–Male)
 10. **Breadboard or Perfboard** – Testing/Prototyping
+
+## 🔋 Circuit Overview
+Since this project uses a rechargeable Li-Po battery, the power flow is designed for portability:
+- The **TP4056 module** handles safe charging of the Li-Po battery and protects it from over-discharge.
+- The **Slide Switch** isolates the battery from the Arduino, allowing you to turn the device off without disconnecting wires.
+- The **Transistor** acts as a digital switch. The Arduino cannot power a motor directly; instead, it sends a weak signal to the transistor base, which closes the circuit for the motor to draw power directly from the 3.7/Battery rail.
+- The **Diode** (Flyback) protects the circuit from voltage spikes caused when the motor stops spinning.
+
+## ✏️ Code Customization
+You can adjust the sensitivity of the sensor by modifying the `loop` section in the code:
+
+```cpp
+// Change '30' to your preferred distance in cm
+if (distance > 0 && distance <= 30) { 
+    digitalWrite(motorPin, HIGH);
+}
