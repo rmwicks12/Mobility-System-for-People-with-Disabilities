@@ -13,16 +13,16 @@ void loop() {
   long duration;
   int distance;
 
-  // Trigger the sensor
+  // Trigger the Sensor
   digitalWrite(trigPin, LOW); delayMicroseconds(2);
   digitalWrite(trigPin, HIGH); delayMicroseconds(10);
   digitalWrite(trigPin, LOW);
 
-  // Read echo
+  // Read Echo
   duration = pulseIn(echoPin, HIGH);
   distance = duration * 0.034 / 2;
 
-  // Show distance
+  // Show Distance
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
@@ -31,7 +31,7 @@ void loop() {
   if (distance > 0 && distance <= 30) {
     digitalWrite(motorPin, HIGH); // Turn on vibration
   } else {
-    digitalWrite(motorPin, LOW);  // Turn off
+    digitalWrite(motorPin, LOW);  // Turn off vibration
   }
 
   delay(200); // Small delay for stability
