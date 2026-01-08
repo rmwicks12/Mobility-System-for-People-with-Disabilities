@@ -1,0 +1,19 @@
+# Arduino IDE generated files (compiled binaries)
+*.elf
+*.hex
+*.bin
+*.lock
+*.ino.cpp
+*.ino.with_bootloader.hex
+*.ino.with_bootloader.bin
+
+# Temporary build folders
+build/
+applet/
+
+# Board specific
+.arduino/
+
+# Mac & Windows system junk (optional but recommended)
+.DS_Store
+Thumbs.db
